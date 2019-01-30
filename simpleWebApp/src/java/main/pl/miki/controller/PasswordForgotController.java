@@ -23,45 +23,46 @@ public class PasswordForgotController {
 
 	
 	
-    private final AccountService accountService;
+   	 private final AccountService accountService;
 
-    private final AccountPasswordResetTokenDao accountPassowrdResetDao;
+    	private final AccountPasswordResetTokenDao accountPassowrdResetDao;
     
-    private final EmailService emailService;
+    	private final EmailService emailService;
 
 	private ModelAndView mav;
 	
 	@Autowired
 	public PasswordForgotController(AccountService accountService,
-								    AccountPasswordResetTokenDao accountPassowrdResetDao,
-								    EmailService emailService) {
+					AccountPasswordResetTokenDao accountPassowrdResetDao,
+					EmailService emailService) {
 		
 		this.accountService = accountService;
 		this.accountPassowrdResetDao = accountPassowrdResetDao;
 		this.emailService = emailService;
 	}
 	
-    @GetMapping(value = "/forgot-password")
-    public ModelAndView ForgotPasswordForm( HttpServletResponse response,
-                                            HttpServletRequest request) {
-    	mav = new ModelAndView("forgot-password");
+    	@GetMapping(value = "/forgot-password")
+   	 public ModelAndView ForgotPasswordForm(HttpServletResponse response,
+                                                HttpServletRequest request) {
+    	
+	mav = new ModelAndView("forgot-password");
     	mav.addObject("forgotPassword", new PasswordForgot());
     	
     	return mav;
     	
         }
     
-    @PostMapping(value = "/forgot-passwordProcess")
-    public ModelAndView loginProcess(HttpServletRequest request, 
-    								 HttpServletResponse response,
-    								 @ModelAttribute("forgotPassword") PasswordForgot forgotPassword) {
+    	@PostMapping(value = "/forgot-passwordProcess")
+    	public ModelAndView loginProcess(HttpServletRequest request, 
+    					 HttpServletResponse response,
+    					 @ModelAttribute("forgotPassword") PasswordForgot forgotPassword) {
       
     	mav = null;
     	
         Account account = accountService.findAccountByEmail(forgotPassword.getEmail());
         if (account == null){
             mav = new ModelAndView("forgot-password");
-            mav.addObject("message", "Username or Password is wrong!!");
+            mav.addObject("message", "Email is wrong!!");
         } else {
         	
         mav = new ModelAndView("login");
