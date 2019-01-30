@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//src/java/main/pl/miki/controller/MainController.java=UTF-8
+encoding//src/java/main/pl/miki/dao/OrderDaoImpl.java=UTF-8
+encoding//src/java/main/pl/miki/dao/ProductDaoImpl.java=UTF-8
+encoding//src/java/main/pl/miki/model/OrderDetailInfo.java=UTF-8
+encoding//src/java/main/pl/miki/model/OrderInfo.java=UTF-8
+encoding//src/java/main/pl/miki/model/ProductInfo.java=UTF-8
